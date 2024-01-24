@@ -104,5 +104,14 @@ Options you need to know for the exam: jar
 | -f \<filename\> <br> --file \<filename\> | JAR filename |
 | -C \<directory\> | Directory containing files to be used to create the JAR |
 
+## Running a Program in One Line with Packages
 
+You can use single-file source-code programs from within a package as long as they rely only on classes supplied by the JDK.
+
+You can run singleFile.Learning using either of these commands:
+
+```
+java Learning.java // from within the singleFile directory
+java singleFile/Learning.java // from the directory above a singleFile
+```
 
