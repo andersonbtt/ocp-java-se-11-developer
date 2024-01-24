@@ -115,3 +115,15 @@ java Learning.java // from within the singleFile directory
 java singleFile/Learning.java // from the directory above a singleFile
 ```
 
+## Ordering Elements in a Class
+
+Order for declaring a class
+| Element | Example | Required | Where does it go |
+| ------- | ------- | -------- | ---------------- |
+| Package declaration | package abc; | No | First line in the file |
+| Import statements | import java.util.*; | No | Immediately after the package (if present) |
+| Class declaration | public class C | Yes | Immediately after the import (if any) |
+| Field declarations | int value; | No | Any top-level element in a class |
+| Method declarations | void method(){} | No | Any top-level element in a class | 
+
+
