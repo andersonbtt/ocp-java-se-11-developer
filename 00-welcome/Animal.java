@@ -7,6 +7,7 @@ public class Animal {
 		name = newName;
 	}
 }
+
 class Animal2 {
 
 }
