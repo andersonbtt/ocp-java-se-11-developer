@@ -1,4 +1,4 @@
-import java.util.Random;
+import java.util.*; // imports java.util.Random among other things
 
 public class ImportExample{
 	public static void main(String... args){
