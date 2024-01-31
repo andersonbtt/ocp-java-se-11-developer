@@ -206,5 +206,43 @@ public class Egg {
 ```
 
 This code prints 5. Fields and blocks are run first in order, setting number 3 then 4.
+
 Then the constructor runs, setting number to 5.
+
+## Understanding Data Types
+
+Java applications contain two types of data:
+
+- primitive types;
+
+- and reference types.
+
+In this section, we'll discuss the differences between a primitive type and a reference type.
+
+### Using Primitive Types
+
+Java has eight built-in data types, referred to as the Java primitive types. These eight data types represent the building blocks for Java objects, because all Java objects are just a complex collection of these primitive data types. 
+That said, a primitive is not an object in Java nor does it represent an object.
+A primitive is just a single value in memory, such as a number or character.
+
+### The Primitive Types
+
+The exam assumes you are well versed in the eight primitive data types, their relative sizes, and what can be stored in them.
+
+| Keyword | Type                        | Example |
+| ------- | --------------------------- | ------- |
+| boolean | true or false               | true    |
+| byte    | 8-bit integral value        | 123     |
+| short   | 16-bit integral value       | 123     |
+| int     | 32-bit integral value       | 123     |
+| long    | 64-bit integral value       | 123L    |
+| float   | 32-bit floating point value | 123.45f |
+| double  | 64-bit floating point value | 123.456 |
+| char    | 16-bit Unicode value        | 'a"     |
+
+### Is String a Primitive?
+
+No, it is not.
+
+String is often mistaken for a ninth primitive because Java includes built-in support for String literals and operators.
 
