@@ -96,5 +96,106 @@ public class Name {
 }
 ```
 
-Lines 2 and 3 both write to ields. Line 4 oth reads and writes data. It reads fields first and last. It then writes the field full.
+Lines 2 and 3 both write to fields. Line 4 oth reads and writes data. It reads fields first and last. It then writes the field full.
+
+### Executing Instance Initialized Blocks
+
+The code between the braces is called a ```code block```. Anywhere you see braces is a code block.
+
+Sometimes code blocks are inside a method. These are run when the method is called. 
+Other times, code blocks appear outside a method. These are called instance initializers.
+
+How many blocks do you see in the following example? How many instance initializers do you see?
+
+```
+public class Bird {
+    public static void main(String[] args){
+        {
+            System.out.println("Feathers");
+        }
+    }
+
+    {
+        System.out.println("Snowy");
+    }
+}
+```
+
+There are four code blocks in this example:
+
+1- A class definition;
+2- A method declaration;
+3- An inner block;
+4- And an instance iinitializer.
+
+Counting code blocks is easy: you just count the number of pairs of braces. If there aren't the same number of open ({) and close (}) or they aren't defined in the proper order, the code doesn't compile. In programming, this is referred to asthe balanced parentheses problem. 
+
+Instance initializers cannot exist inside of a method.
+
+#### Following Order of Initialization
+
+When writing code that initializes fields in multiple places, you have to keep track of the order of initialization. This is the order in which different methods, constructors, or blocks are called when an instance of the class is created.
+
+- Fields and instance initializer blocks are run in the order in which they appear in the file.
+- The constructor runs after all fields and instance initializer blocks have run.
+
+Lets look at the example:
+
+```
+public class Chick {
+    private String name = "Fluffy";
+    {    System.out.println("setting field");   }
+    public Chick(){
+        name = "Tiny";
+        System.out.println("setting constructor");
+    }
+    public static void main(String[] args){
+        Chick chick = new Chick();
+        System.out.println(chick.name);
+    }
+}
+```
+
+Running this example prints this:
+
+```
+setting field
+setting constructor
+Tiny
+```
+
+On line 9, we call the constructor of Chick. Java creates a new object.
+First it initializes name to "Fluffy" on line 2.
+Next it executes the println() statement in the instance initializer on line 3.
+Once all the fields and instance initializers have run, Java returns to the constructor.
+Line 5 changes the value to "Tiny", and line 6 prints another statement.
+At this point, the constructor is done, and then the execution goes back to the println() statement on line 10.
+
+Order matters for the fields and blocks of code. You can't refer to a variable before it has been defined:
+
+```
+    {
+        System.out.println(name); // DOES NOT COMPILE
+    }
+    private String name = "Fluffy";
+```
+
+You should expect to see a question about initialization on the exam. Analyze the following code:
+
+```
+public class Egg {
+    public Egg(){
+        number = 5;
+    }
+    public static void main(String[] args){
+        Egg egg = new Egg();
+        System.out.println(egg.number);
+    }
+    private int number = 1;
+    {   number = 4; }
+}
+```
+
+This code prints 5. Fields and blocks are run first in order, setting number 3 then 4.
+Then the constructor runs, setting number to 5.
 
