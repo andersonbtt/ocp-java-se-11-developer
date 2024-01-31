@@ -66,3 +66,35 @@ public class Chicken {
 ```
 
 For most classes, you don't have to code a constructor - the compiler will supply a "do nothing" default constructor.
+
+### Reading and Writing Member Fields
+
+It's possible to read and write instance variables directly from the caller:
+
+```
+public class Swan{
+    int numberEggs; // instance variable
+    public static void main(String[] args){
+        Swan mother = new Swan();
+        mother.numberEggs = 1; // set variable
+        System.out.println(mother.numberEggs); // read variable
+    }
+}
+```
+
+The caller in the case is the main() method, which could be in the same or in another class.
+Reading a variable is known as getting it. The class gets numberEggs directly to print it out.
+Writing to a variable is known as setting it. The class sets numberEggs to 1.
+
+You can even read values of already initialized fields on a line initializing a new field:
+
+```
+public class Name {
+    String first = "Theodore";
+    String last = "Moose";
+    String full = first + last;
+}
+```
+
+Lines 2 and 3 both write to ields. Line 4 oth reads and writes data. It reads fields first and last. It then writes the field full.
+
