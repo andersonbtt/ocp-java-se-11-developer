@@ -124,8 +124,11 @@ public class Bird {
 There are four code blocks in this example:
 
 1- A class definition;
+
 2- A method declaration;
+
 3- An inner block;
+
 4- And an instance iinitializer.
 
 Counting code blocks is easy: you just count the number of pairs of braces. If there aren't the same number of open ({) and close (}) or they aren't defined in the proper order, the code doesn't compile. In programming, this is referred to asthe balanced parentheses problem. 
@@ -137,6 +140,7 @@ Instance initializers cannot exist inside of a method.
 When writing code that initializes fields in multiple places, you have to keep track of the order of initialization. This is the order in which different methods, constructors, or blocks are called when an instance of the class is created.
 
 - Fields and instance initializer blocks are run in the order in which they appear in the file.
+
 - The constructor runs after all fields and instance initializer blocks have run.
 
 Lets look at the example:
@@ -165,10 +169,15 @@ Tiny
 ```
 
 On line 9, we call the constructor of Chick. Java creates a new object.
+
 First it initializes name to "Fluffy" on line 2.
+
 Next it executes the println() statement in the instance initializer on line 3.
+
 Once all the fields and instance initializers have run, Java returns to the constructor.
+
 Line 5 changes the value to "Tiny", and line 6 prints another statement.
+
 At this point, the constructor is done, and then the execution goes back to the println() statement on line 10.
 
 Order matters for the fields and blocks of code. You can't refer to a variable before it has been defined:
