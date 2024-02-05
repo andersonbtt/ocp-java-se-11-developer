@@ -234,7 +234,7 @@ D. Security is a design goal.
 
 E. Sideways compatibility is a design goal.
 
-ANSWER: C, D, E.
+ANSWER: C, D.
 
 12. Which options are valid on the javac command without considering module options? (Choose all that apply.)
 
@@ -252,7 +252,7 @@ F. -f
 
 G. -p
 
-ANSWER: D, E.
+ANSWER: C, E.
 
 13. Which options are valid on the java command without considering module options? (Choose all that apply.)
 
@@ -268,7 +268,7 @@ E. -f
 
 F. -p
 
-ANSWER: C, D, F.
+ANSWER: C.
 
 14. Which options are valid on the jar command without considering module options? (Choose all that apply.)
 
@@ -284,7 +284,7 @@ E. -f
 
 F. -p
 
-ANSWER: A, B, D, E, F.
+ANSWER: A, B, C, E.
 
 15. What does the following code output when run ad java Duck Duck Goose?
 
@@ -328,7 +328,7 @@ E. package a;
 
 F. package A;
 
-ANSWER: B, D, F.
+ANSWER: D.
 
 17. Which of the following are true? (Choose all that apply.)
 
@@ -402,4 +402,4 @@ D. -class-path
 
 E. --class-path
 
-ANSWER: A, C, E.
+ANSWER: A, B, E.
