@@ -254,4 +254,30 @@ Key points:
 - Each numeric type uses twice as many bits as the smaller similar type.
 - All of the numeric types are signed in Java. This means that they reserve one of their bits to cover a negative range. For example, byte ranges grom -128 to 127, considering 0.
 
+### Signed and Unsigned: short and char
+
+You should be aware that short and char are closely related, as both are stored as integral types with the same 16-bit length. The primary difference is that short is signed, which means it splits its range across the poritive and negative integers. Alternativel, chas is unsigned, which means tance is strictly positive including 0. Therefore, char can hold a higher positive numeric value than short, but cannot hold any negative numbers.
+
+The compiler allows them to be used interchangeably in some cases, as shown here:
+
+```
+short bird = 'd';
+char mammal = (short)83;
+```
+
+Printing each variable displays the value associated with ther type:
+
+```
+System.out.println(bird);   // Prints 100
+System.out.println(mammal); // Prints S
+```
+
+This usage is not without restriction, though. If you try to set a value outside the range of short char, the compiler will report and error.
+
+```
+short reptile = 65535;  //DOES NOT COMPILE
+char fish = (short) -1; //DOES NOT COMPILE
+```
+
+
 
