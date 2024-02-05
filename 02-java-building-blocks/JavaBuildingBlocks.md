@@ -246,3 +246,12 @@ No, it is not.
 
 String is often mistaken for a ninth primitive because Java includes built-in support for String literals and operators.
 
+Key points:
+
+- The float and double types are used or floating-point (decimal) values.
+- A float requires the letter f following the number so Java knows it is a float.
+- The byte, short, int, and long tpes are used for numbers without decimal points. In mathematics, these are all referred to ad integral valuse, but in Java, int and Integer refer to specific types.
+- Each numeric type uses twice as many bits as the smaller similar type.
+- All of the numeric types are signed in Java. This means that they reserve one of their bits to cover a negative range. For example, byte ranges grom -128 to 127, considering 0.
+
+
