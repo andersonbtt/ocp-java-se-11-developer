@@ -279,5 +279,31 @@ short reptile = 65535;  //DOES NOT COMPILE
 char fish = (short) -1; //DOES NOT COMPILE
 ```
 
+### Floating-Point Numbers and Scientific Notation
 
+Floating-points values like double and float are decidedly not easy to calculate the range for. In most computer systems, floating-point numbers are stored in scientific notation. This means the numbers are stored as two numbers, a and b, of the form a * 10^b.
 
+This notation allows much larger values to be stored, at the coast of accuracy. For example, you can store a value of 3 * 10^200 in a double, which would require a lot more than 8 bytes if every digit were stored without scientific notation (84 bytes in case you were wondering). To accomplish this, you only store the first dozen or so digits of the number. The name scientific notation comes from science, where often only the first few significant digits are required for a calculation.
+
+The number of bits is used by Java when it figured out how much memory to reserve fo your variable. For example, Java allocates 32 bits if you write this:
+
+```
+int num;
+```
+
+## Writing Literals
+
+When a number is present in the code, it is called a literal. By default, Java assumes you are defining an int value with numeric literal. In the following example, the number listed is bigger than what fits in an int. Remember, you are not expected to memorize the maximum value for an int. The exam will include it in the question if it comes up.
+
+```
+long max = 3123456789; //DOES NOT COMPILE
+```
+
+Java complains the number is out of range. And it is - for an int. However, we don't have an int. The solution is to add the character L to the number:
+
+```
+long max = 3123456789L; //NOW JAVA KNOWS IT IS A LONG
+```
+Alternatively, you could add a lowercase l to the number, but it looks like the number 1.
+
+Another way to specify numbers is to change the 
