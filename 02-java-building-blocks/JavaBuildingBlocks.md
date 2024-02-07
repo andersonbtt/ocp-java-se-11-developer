@@ -306,4 +306,31 @@ long max = 3123456789L; //NOW JAVA KNOWS IT IS A LONG
 ```
 Alternatively, you could add a lowercase l to the number, but it looks like the number 1.
 
-Another way to specify numbers is to change the 
+Another way to specify numbers is to change the "base" :
+
+- Octal ( 0 - 7 ): Uses the number 0 as prefix (e.g.: 01, 07)
+
+- Hexadecimal ( 0 - F ): Uses the number 0 followed by x or X (e.g.: 0xFF, 0XFF, 0xFf). Decimal is case insensitive
+
+- Binary ( 0 - 1): Uses the number 0 followed by b or B (e.g.: 0b10, 0B10)
+
+## Literals and the Underscore Character
+
+You can have underscores in numbers to make it easier to read:
+
+```
+int million1 = 1000000;
+int million2 = 1_000_000;
+```
+
+You'd rather be reading the latter one because the zeroes don't run together.
+
+Let's look to other examples:
+
+```
+double notAtStart = _1000.00; //DOES NOT COMPILE
+double notAtEnd = 1000.00_; //DOES NOT COMPILE
+double notByDecimal = 1000_.00; //DOES NOT COMPILE
+double annoyingButLegal = 1_00_0.0_0; //Ugly, but compiles
+double reallyUgle = 1____________2; //Also compiles
+```
