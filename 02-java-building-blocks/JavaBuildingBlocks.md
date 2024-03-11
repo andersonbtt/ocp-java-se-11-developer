@@ -334,3 +334,30 @@ double notByDecimal = 1000_.00; //DOES NOT COMPILE
 double annoyingButLegal = 1_00_0.0_0; //Ugly, but compiles
 double reallyUgle = 1____________2; //Also compiles
 ```
+
+## Using Reference Types
+
+A reference type refers to an object (an instance of a class). Unlike primitive types that hold their values in the memory where the variable is allocated, references do not hold the value of th object they refer to. Instead a referene "points" to an object by storing the memory address where the object is located, a concept referred to as a pointes. Unlike othe languages, Java does not alow you to learn what the physical memory address is. You can only use the reference to refer to the object.
+
+Suppose we declare a reference of type java.util.Date and a reference of type String:
+
+java.util.Date today;
+String greeting;
+
+The today variable is a reference of type Date and can only point to a Date object. The greeting variable is a reference that can only point to a String object. A value is assigned to a reference in one of two ways:
+
+- A reference can be assigned to another object of the same or compatible type.
+
+- A reference can be assigned to a new object using the new keyword.
+
+For example, the following statements assign thee references to new objects:
+
+today = new java.util.Date();
+greeting = new String("How are you?");
+
+The today reference now points to a new Date object in memory, and today can be used to access the various fields and methods of this Date object. Similarly, the greeting reference points to a new String object "How are you?". The String and Date objects do not have names and can be accessed only via their corresponding reference.
+
+![Figura 2.1](/figuras/figura-2-1.png)
+
+An object in memory can be accessed only via a reference.
+
