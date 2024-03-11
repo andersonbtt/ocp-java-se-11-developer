@@ -361,3 +361,41 @@ The today reference now points to a new Date object in memory, and today can be 
 
 An object in memory can be accessed only via a reference.
 
+## Distinguishing between Primitive and Reference Types
+
+There are a few important differences you should know between primitives and reference types. First, reference types can be assigned null, which means they do no currently refer to an object. Primitive types will give you a compiler error if you attempt to assign them null. In this example, value cannot point to null because it is of type int:
+
+int value = null; //DOES NOT COMPILE
+String s = null;
+
+But what if you don't know the value of an int and want to assign it to null? In that case, you should use a numeric wrapper class, such as Integer, instead of int.
+
+Next, reference types can be used to call methods, assuming the reference is not null. Primitives do not have methods declared on them. In this example, we can call a mthod on reference since it is of a reference type. You can tell length is a method because it has () after it. See if you can understand why the following snuppet does not compile:
+
+4: String reference = "hello";
+5: int len = reference.length();
+6: int bad = len.length(); //DOES NOT COMPILE
+
+Line 6 is gibberish. No methods exist on len because it is an int primitive. Primitives do not have methods. Remember, a String is not a primitive, so you can call methods like length() on a String reference, as we did on line 5.
+
+Finally, notice that all the primitive types have lowercase type names. All classes that come with Java begin with uppercase. Although not required, it is a standard preactice, and you should follow this convention for classe syou create as well.
+
+## Declaring Variables
+
+You've seen some variables already. A variable is a name for a piece of memory that stored data. When you declare a variable, you need to state the variable type along with giing it a name. For example, the following code decalres two variables. One is named zooName and is of type String. The other is named numberAnimals and is of type int.
+
+String zooName;
+int numberAnimals;
+
+Now that we've declared a variable, we can give it a value. This is called initializing a variable. To initialize a variable, you just type the variable name followed by an equal sign, followed by the desired value:
+
+zooName = "The Best Zoo";
+numberAnimals = 100;
+
+Since you often want to initialize a variable right away, you can do so in the same statement as the declaration. For example, here we merge the previous declarations and initializations into more concise code:
+
+String zooName = "The Best Zoo";
+int numberAnimals = 100;
+
+In the following sections, we§ll look at how to properly define variables in one or multiple lines.
+
