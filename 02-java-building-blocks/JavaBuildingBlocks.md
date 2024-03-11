@@ -399,3 +399,56 @@ int numberAnimals = 100;
 
 In the following sections, we§ll look at how to properly define variables in one or multiple lines.
 
+## Identifying Identifiers
+
+It probably comes as no surprise to you that Java has precise rules about identifier names. An identifier is the name of a variable, method, class, interface, or package. 
+
+Luckiliy, the rules for identifiers for variables apply to all of the other types that you are free to name.
+
+There are only four rules to remember for legal identifiers:
+
+- Identifiers must begin with a letter, a $ symbol, or a _ symbol.
+
+- Identifiers can include numbers but not start with them.
+
+- Since Java 9, a single underscore _ is not allowed as an identifier.
+
+- You cannot use the same name as a Java reserved word. A reserved word is a special word that Java has held aside so that you are not allowed to use it. Remember that Java is case sensisitve, so you can use versions of the keywords that only differ in case. Please don't though.
+
+You don't need to memorize the full list of reserved words. The exam will only ask you about ones that are commonly used, such as class and for.
+
+### Reserved words
+![Tabela 2.2](/figuras/tabela-2-2.png)
+
+* The reserved words const and goto aren't actually used in JAva. They are reserved so that people coming from other programming languages don't use them by accident - and in theory, in case Java wants to use them one day
+
+** true/false/null are not actualy reserved words, but literal values. Since they cannot be used as identifier names, we include them in this table.
+
+Prepare to be tested on these rules. The following examples are legal:
+
+
+long okidentifier;
+
+float $OK2Identifier;
+
+boolean _alsoOK1d3ntifi3r;
+
+char __SStillOkbutKnotsonice$;
+
+
+These examples are not legal:
+
+
+int 3DPointClass; //identifiers cannot begin with a number
+
+byte hollywood@vine; //@ is not a letter, digit, $ or _
+
+String *$coffee; // * is not a letter, digit, $ or _
+
+double public; // public is a reserve word
+
+short _; // a single underscore is not allowed
+
+
+
+
