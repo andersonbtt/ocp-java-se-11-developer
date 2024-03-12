@@ -449,6 +449,92 @@ double public; // public is a reserve word
 
 short _; // a single underscore is not allowed
 
+## Style: camelCase
+
+although you can do crazy thing with identifier names, please don't. Java has conventions so that code is readable and consistent. This consistency includes camel case, often written as camelCase for emphasis. In camelCase, the first letter of each word is capitalized.
+
+The camelCase format makes identifiers easier to read. Which would you rather read: Thisismyclass name os ThisIsMyClass name? The exam will mostly use common conventions for identifiers, but not always. When you see a nonstandard identifier, be sure to check if it is leagl. If it's not, you get to mark the answer "does not compile" and skip analyzing everything else in the question.
+
+### Identifiers in the Real World
+
+Most Jaa developers follow these conventions for identifier names:
+
+- Method and variable names are written in camelCase with the first letter being lowercase.
+
+- Class and interface names are written in camelCase with the first letter being uppercase. Also, don't start any class name with $, as the compiler uses this symbol for some files.
+
+Also, know that valid letters in Java are not just characters in the English alphabet. Java supports the Unicode character set, so there are thousands of characters that can start a legal Java identifier. Some are non-Arabic numerals that may appear after the first character in a legal identifier. Luckily, you don't have to worry about memorizing those for exam. If you are in a country that doesn't use the English alphabet, this is useful to know for a job.
+
+## Style: snake_case
+
+Another style you might see both o the exam and in the real world or in other languages is calles snake case, often written as snake_case for emphasis. It simply uses an underscore (_) to separate words, often entirely in lowercase. The previous example would be written as this_is_my_class name in snake_case.
+
+While both camelCase and snake_case are perfectly valid syntax in Java, the development community functions better when everyone adopts the same style convention. With that in mind, Oracle (and Sun before it) recommends everyone use camelCase for class and variabl names. There are some values that are often written in snake_case, such as THIS_IS_A_CONSTANT. In addition, enum values tend to be written with snake_case, as in Color.RED, Color.DARK_GREY, and so on.
+
+## Declaring Multiple Variables
+
+You can also declare and initialize multiple variables in the same statement. How many variables do you think are declared an initialized in the following example?
+
+```
+void sandFence() {
+    String s1, s2;
+    String s3 = "yes", s4 = "no";
+}
+```
+
+Four String variables were declared: s1, s2, s3 and s4. You can declare many variables in the same declaration as long as they are all of the same type. You can also initialize any or all of those values inline. In the previous example, we have two initialized variables: s3 and s4. The other two variables remain declared but not yet initialized.
+
+This is where it gets tricky. Pay attention to tricky things! The exam will attempt to trick you. Again, how many variables do you think are declared and initialized in the following code?
+
+```
+void paintFence(){
+    int i1, i2, i3 = 0;
+}
+```
+
+As you should expect, three variables were declared: i1, i2, and i3. However, only one of those values was initialized: i3. The other two remain declared but not yet initialized. That's the trick. Each snippet separated by a comma is a little declaration of its own. The initialization of i3 only applies to i3. It doesn't have anything to do with i1 or i2 despite being in the same statement. As you will see in the next session, you can't actually use i1 or i2 until they have been initialized.
+
+Another way the exam could try to trick you is to show you code like this line:
+
+```
+int num, Strin value; // DOES NOT COMPILE
+```
+
+This code doesn't compile because it tries to declare multiple variables of different types in the same statement. The shortcut to declare multiple variables in the same statement is legal only when they share a type.
+
+NOTE: Legal, valid, and compiles are all synonyms in the Java exam world. We try to use all the terminology you could encounter on the exam.
+
+To make you understand this, see if you can figure out which of the following are legal declarations:
+
+```
+4: boolean b1, b2; //OK
+5: String s1 = "1", s2; //OK
+6: double d1, double d2; //NOK
+7: int i1; int i2; //OK
+8: int i3; i4; //NOK
+```
+
+The first statement on line 4 is legal. It declares two variables without initializing them. The second statement on line 5 is also legal. It declares two variables and initializes only one of them.
+
+The third statement on line 6 is not legal. Java does not allow you to declare two different types in the same statement. Wait a minute! Variables d1 and d2 are the same type. They are both of type double. Although that's true, it still isn't allowed. If you want to declare multiple variables in the same statement, they must share the same type declaration and not repeat it. double d1, d2; would have been legal.
+
+The fourth statement on line 7 is legal. Although int does appear twice, each one is in a separate statement. A semicolon (;) separates statements in Java. It just so happnes there are two completely different statements on the same line. The fifth statement on line 8 is not legal. Again, we have two completely different statements on the same line. The second one on line 8 is not a valid declaration because it omits the type. When you see an oddly placed semicolon on the exam, pretend the code is on separate lines and think about whether the code compilesthat way. In this case, the last two lines of code could be rewritten as follows:
+
+```
+int i1;
+int i2;
+int i3;
+i4;
+```
+
+Looking at the last line on its own, you can easily see that the declaration is invalid. And yes, the exam really does cram multiple statements onto the same line - partly to try to trick you and partly to fit more code on the screen.
+
+In the real world, please limit yourself to one declaration per statement and line. Your teammates will thank you for the readable code.
+
+
+
+
+
 
 
 
