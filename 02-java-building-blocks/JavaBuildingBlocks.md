@@ -976,6 +976,14 @@ Remember, your code isn't the only process running in yout Java program. Java co
 
 All Java objects are stored in your program memory's heap. The heap, which is also referred to as the free store, represents a large pool of unused memory allocated to your Java application. The heap may be quite large, dependeing on your environment, but there is always a limit to its size. After all, there's no such thing as a computer with infinite memory. If yout program keeps insatntiating objects and leaving them on the heap, eventually it will run out of memory and crash.
 
+### Garbage Collection in Other Languages
+
+One of the distinguished characteristics of Java since its very first version is that it automatically performs garbage collection for you. In fact, other than removing references to an object, there's very little you can do to control garbage collection directly in Java.
+
+While garbage collection is pretty standard in most programming languages now, some languages, such as C, do not have automatic garbage collection. When a developer finishes using an object in memory, they have to manually deallocate it so the memory can be reclaimed and reused.
+
+Failure to properly handle garbage collection can lead to catastrophic performance and security problems, the most common of which is for an application to run out of memory. Another similar problem, though, is if secure data like credit card number stays in memory long after it is used and is able to be read by other programs. Luckily, Java handles a lot of these complexes issues for you.
+
 
 
 
