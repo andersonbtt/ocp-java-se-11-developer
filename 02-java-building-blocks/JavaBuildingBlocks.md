@@ -958,6 +958,18 @@ In this class, we have one class variable, MAX_LENGTH; one instance variable, le
 
 Next, length goes into scope on line 3 where it is declared. It stays in scope as long as this Mouse object exists. inches goes into scope where it is declared on line 4. It goes out of scope at the end of the method on line 9. newSize goes into scope where it is declared on line 6. Since it is defined inside the if statement bloc, it goes out of scope when that block ends on line 8.
 
+## Reviewing Scope
+
+Got all that? Letç review the rules on scope:
+
+- Local variables: In scope from declaration to end of block
+
+- Instance variables: In scope from declaration until object eligible for garbage collection
+
+- Class variables: In scope from declaration until program ends
+
+
+
 
 
 
