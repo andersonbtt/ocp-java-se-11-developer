@@ -33,7 +33,7 @@ Then you rite ```new Park()``` to actually create the object.
 
 Park() looks like a method since it is followed by parenthesis. It's called a constructor, which is a special type of method that creates a new object.
 
-```
+```java
 public class Chick {
     public Chick() {
         System.out.println("in constructor");
@@ -45,7 +45,7 @@ There are two key points to note about the constructor:
 - The name of the constructor matches the name of the class; and 
 - there's no return type;
 
-```
+```java
 public class Chick {
     public void Chick() {} //THIS IS NOT A CONSTRUCTOR SINCE IT HAS RETURN TYPE
 }
@@ -55,7 +55,7 @@ When you see a mehod name beggining with a capital letter and having no return t
 
 The purpose of a constructor is to initialize fields, although you can put any code in there. Another way to initialize fields is to do so directly on the line on which they are declared:
 
-```
+```java
 public class Chicken {
     int numEggs = 12; //initialize on line
     String name;
@@ -71,7 +71,7 @@ For most classes, you don't have to code a constructor - the compiler will suppl
 
 It's possible to read and write instance variables directly from the caller:
 
-```
+```java
 public class Swan{
     int numberEggs; // instance variable
     public static void main(String[] args){
@@ -88,7 +88,7 @@ Writing to a variable is known as setting it. The class sets numberEggs to 1.
 
 You can even read values of already initialized fields on a line initializing a new field:
 
-```
+```java
 public class Name {
     String first = "Theodore";
     String last = "Moose";
@@ -107,7 +107,7 @@ Other times, code blocks appear outside a method. These are called instance init
 
 How many blocks do you see in the following example? How many instance initializers do you see?
 
-```
+```java
 public class Bird {
     public static void main(String[] args){
         {
@@ -145,7 +145,7 @@ When writing code that initializes fields in multiple places, you have to keep t
 
 Lets look at the example:
 
-```
+```java
 public class Chick {
     private String name = "Fluffy";
     {    System.out.println("setting field");   }
@@ -162,7 +162,7 @@ public class Chick {
 
 Running this example prints this:
 
-```
+```java
 setting field
 setting constructor
 Tiny
@@ -182,7 +182,7 @@ At this point, the constructor is done, and then the execution goes back to the 
 
 Order matters for the fields and blocks of code. You can't refer to a variable before it has been defined:
 
-```
+```java
     {
         System.out.println(name); // DOES NOT COMPILE
     }
@@ -191,7 +191,7 @@ Order matters for the fields and blocks of code. You can't refer to a variable b
 
 You should expect to see a question about initialization on the exam. Analyze the following code:
 
-```
+```java
 public class Egg {
     public Egg(){
         number = 5;
@@ -260,21 +260,21 @@ You should be aware that short and char are closely related, as both are stored 
 
 The compiler allows them to be used interchangeably in some cases, as shown here:
 
-```
+```java
 short bird = 'd';
 char mammal = (short)83;
 ```
 
 Printing each variable displays the value associated with ther type:
 
-```
+```java
 System.out.println(bird);   // Prints 100
 System.out.println(mammal); // Prints S
 ```
 
 This usage is not without restriction, though. If you try to set a value outside the range of short char, the compiler will report and error.
 
-```
+```java
 short reptile = 65535;  //DOES NOT COMPILE
 char fish = (short) -1; //DOES NOT COMPILE
 ```
@@ -287,7 +287,7 @@ This notation allows much larger values to be stored, at the coast of accuracy. 
 
 The number of bits is used by Java when it figured out how much memory to reserve fo your variable. For example, Java allocates 32 bits if you write this:
 
-```
+```java
 int num;
 ```
 
@@ -295,13 +295,13 @@ int num;
 
 When a number is present in the code, it is called a literal. By default, Java assumes you are defining an int value with numeric literal. In the following example, the number listed is bigger than what fits in an int. Remember, you are not expected to memorize the maximum value for an int. The exam will include it in the question if it comes up.
 
-```
+```java
 long max = 3123456789; //DOES NOT COMPILE
 ```
 
 Java complains the number is out of range. And it is - for an int. However, we don't have an int. The solution is to add the character L to the number:
 
-```
+```java
 long max = 3123456789L; //NOW JAVA KNOWS IT IS A LONG
 ```
 Alternatively, you could add a lowercase l to the number, but it looks like the number 1.
@@ -318,7 +318,7 @@ Another way to specify numbers is to change the "base" :
 
 You can have underscores in numbers to make it easier to read:
 
-```
+```java
 int million1 = 1000000;
 int million2 = 1_000_000;
 ```
@@ -327,7 +327,7 @@ You'd rather be reading the latter one because the zeroes don't run together.
 
 Let's look to other examples:
 
-```
+```java
 double notAtStart = _1000.00; //DOES NOT COMPILE
 double notAtEnd = 1000.00_; //DOES NOT COMPILE
 double notByDecimal = 1000_.00; //DOES NOT COMPILE
@@ -365,16 +365,20 @@ An object in memory can be accessed only via a reference.
 
 There are a few important differences you should know between primitives and reference types. First, reference types can be assigned null, which means they do no currently refer to an object. Primitive types will give you a compiler error if you attempt to assign them null. In this example, value cannot point to null because it is of type int:
 
+```java
 int value = null; //DOES NOT COMPILE
 String s = null;
+```
 
 But what if you don't know the value of an int and want to assign it to null? In that case, you should use a numeric wrapper class, such as Integer, instead of int.
 
 Next, reference types can be used to call methods, assuming the reference is not null. Primitives do not have methods declared on them. In this example, we can call a mthod on reference since it is of a reference type. You can tell length is a method because it has () after it. See if you can understand why the following snuppet does not compile:
 
+```java
 4: String reference = "hello";
 5: int len = reference.length();
 6: int bad = len.length(); //DOES NOT COMPILE
+```
 
 Line 6 is gibberish. No methods exist on len because it is an int primitive. Primitives do not have methods. Remember, a String is not a primitive, so you can call methods like length() on a String reference, as we did on line 5.
 
@@ -426,7 +430,7 @@ You don't need to memorize the full list of reserved words. The exam will only a
 
 Prepare to be tested on these rules. The following examples are legal:
 
-
+```java
 long okidentifier;
 
 float $OK2Identifier;
@@ -434,11 +438,11 @@ float $OK2Identifier;
 boolean _alsoOK1d3ntifi3r;
 
 char __SStillOkbutKnotsonice$;
-
+```
 
 These examples are not legal:
 
-
+```java
 int 3DPointClass; //identifiers cannot begin with a number
 
 byte hollywood@vine; //@ is not a letter, digit, $ or _
@@ -448,6 +452,7 @@ String *$coffee; // * is not a letter, digit, $ or _
 double public; // public is a reserve word
 
 short _; // a single underscore is not allowed
+```
 
 ## Style: camelCase
 
@@ -475,7 +480,7 @@ While both camelCase and snake_case are perfectly valid syntax in Java, the deve
 
 You can also declare and initialize multiple variables in the same statement. How many variables do you think are declared an initialized in the following example?
 
-```
+```java
 void sandFence() {
     String s1, s2;
     String s3 = "yes", s4 = "no";
@@ -486,7 +491,7 @@ Four String variables were declared: s1, s2, s3 and s4. You can declare many var
 
 This is where it gets tricky. Pay attention to tricky things! The exam will attempt to trick you. Again, how many variables do you think are declared and initialized in the following code?
 
-```
+```java
 void paintFence(){
     int i1, i2, i3 = 0;
 }
@@ -496,7 +501,7 @@ As you should expect, three variables were declared: i1, i2, and i3. However, on
 
 Another way the exam could try to trick you is to show you code like this line:
 
-```
+```java
 int num, Strin value; // DOES NOT COMPILE
 ```
 
@@ -506,7 +511,7 @@ NOTE: Legal, valid, and compiles are all synonyms in the Java exam world. We try
 
 To make you understand this, see if you can figure out which of the following are legal declarations:
 
-```
+```java
 4: boolean b1, b2; //OK
 5: String s1 = "1", s2; //OK
 6: double d1, double d2; //NOK
@@ -520,7 +525,7 @@ The third statement on line 6 is not legal. Java does not allow you to declare t
 
 The fourth statement on line 7 is legal. Although int does appear twice, each one is in a separate statement. A semicolon (;) separates statements in Java. It just so happnes there are two completely different statements on the same line. The fifth statement on line 8 is not legal. Again, we have two completely different statements on the same line. The second one on line 8 is not a valid declaration because it omits the type. When you see an oddly placed semicolon on the exam, pretend the code is on separate lines and think about whether the code compilesthat way. In this case, the last two lines of code could be rewritten as follows:
 
-```
+```java
 int i1;
 int i2;
 int i3;
@@ -531,10 +536,314 @@ Looking at the last line on its own, you can easily see that the declaration is 
 
 In the real world, please limit yourself to one declaration per statement and line. Your teammates will thank you for the readable code.
 
+# Initializing Variables
+
+Before you can use a variable, it needs a value. Some types of variables get this value set automatically, and other require the programmer to specify it. In the following sections, we'll look at the differences between the defaults for local, instance, and class variables.
+
+## Creating Local Variables
+
+A local variable is a variable defined whithin a constructor, method, or initialized block. For simplicity, we will focus primarily on local variables whithin methods in this section, although the rules for the other are the same.
+
+Local variables do not have a default value and must be initialized before use. Furthermore, the compiler will report an error if you try to read an uninitialized value. For example, the following code generates a compiler error:
+
+```java
+4: public int notValid() {
+5:   int y = 10;
+6:   int x;
+7:   int reply = x + y; // DOES NOT COMPILE
+8:   return reply;
+9: }
+```
+
+The y variable is initialized to 10. However, because x is not initialized before it is used in the expression on line 7, the compiler generates the following error:
 
 
+```bash
+Test.java:7: variable x might not have been initialized
+    int reply = x + y; // DOES NOT COMPILE
+```
+
+Until x is assigned a value, it cannot appear within an expression, and the compiller will gladly remind you of this rule. The compiler knows your code has control of what happens inside the method and can be expected to initialize values.
+
+The compiler is smart enough to recognize variables that have been initialized after their declaration bu before they are used. Here's an example:
 
 
+```java
+public int valid() {
+    int y = 10;
+    int x; // x is declared here
+    x = 3; // and initialized here
+    int reply = x + y;
+    return reply;
+}
+```
+
+The compiler is also smart enough to recognize initializations that are more complex. In this example, there are two branches of code:
 
 
+```java
+public void findAnswer(boolean check) {
+    int answer;
+    int otherAnswer;
+    int onlyOneBranch;
+    if (check) {
+        onlyOneBranch = 1;
+        answer = 1;
+    } else {
+        answer = 2;
+    }
+    System.out.println(answer);
+    System.out.println(onlyOneBranch); // DOES NOT COMPILE
+}
+```
 
+The answer variable is initialized in both branches of the if statement, so the compiler is perfectly happy. It knows that regardless of whether check is true or false, the value answer will be set to something before it is used. The otherAnswer variable is not initialized but never used, and the compiler is equally happy. Remember, the compiler is only concerned if you try to use uninitialized local variables; it doesn't mind the ones you never use.
+
+The onlyOneBranch variable is initialized only if check happens to be true. The compiler knows there is the possibility for check to be false, resulting in uninitialized code, and gives a compiler error.
+
+NOTE: On the exam, be wary of any local variable that is declared but not initialized in a single line. This is a commong place on the exam that could result in a "Does not compile" answer. AS you saw in the previous examples, you are not required to initialize the variable on the same line it is defined, but be sure to check it's initialized before it's used on the exam.
+
+## Passing Constructor and Method Parameters
+
+Variables passed to a constructor or method are calles constructor parameters or method parameters, respectivaly. These parameters are local variables that have been pre-initialized. In other words, they are like local variables that have been initialized before the method is called, by the caller. The rules for initializing constructor and method parameters are the same, so we'll focus primarily on method paramters.
+
+In the previous example, check is a method parameter.
+
+
+```java
+public void findAnswer(boolean check) {}
+```
+
+Take a look at the following method checkAnswer() in the same class:
+
+```java
+public void checkAnswer() {
+    boolean value;
+    finsAnswer(value); // DOES NOT COMPILE
+}
+```
+
+The call to findAnswer() does not compile because it tries to use a variable that is not initialized. While the caller of a method checkAnswer() needs to be concerned about the variable being initialized, once inside the method findAnswer(), we can assume the local variable has been initialized to some value.
+
+## Defining Instance and Class Variables
+
+Variables that are not local variables are defined either as instance variables or as class variables. An instance variable, often called a field, is a value defined whithin a specific instance of an object. Let's say we have a Person class with an instance variable name of type String. Each instance of the class would have its own value for name, such as Elysia or Sarah. Two instances could have the same value for name, but changin the value for one does not modify the other.
+
+On the other hand, a class variable is one that is defined on the class level and shared among all instances of the class. It can even be publicly accessible to classes outside the class without requiring an instance to use. In our previous Person example, a shared class variable could be used to represent the list of people at the zoo today. You can tell a variable is a class variable because it has the keyword static before it.
+
+Instance and class variables do not require you to initialize them. As soon as you declare these variables, they are given a default value. You'll need to memorize everthing in table 2.3 except the default value of char. To make this easier, remember that the compiler doesn't know what value to use and so wants the simplest value it can give the type: null for an object and 0/false for a primitive.
+
+### Default initialization values by type
+![Tabela 2.3](/figuras/tabela-2-3.png)
+
+## Introducing var
+
+Starting in Java 10, you have the option of using the keyword var instead of the type for local variables under certain conditions. To use this feature, you just type var instead of the primitive or reference type. Here's an example:
+
+```java
+public void whatTypeAmI() {
+    var name = "Hello";
+    var size = 7;
+}
+```
+
+The formal name of this feature is local variable type inference. Let's take that apart. First comes local variable. This means just what it sounds like. You can only use this feature for local variables. The exam may try to trick you with code like this:
+
+
+```java
+public class VarKeyword {
+    var tricky = "Hello"; // DOES NOT COMPILE
+}
+```
+
+Wait a minute! We just learned the difference between instance and local variables. The variable tricky is an instance variable. Local variable type inference works with local variables and not instance variables.
+
+NOTE: var can be used in for loops, with some lambdas and with try-with-resources. All of these cases are still internal to a method and therefore consistent with what you learn in this chapter.
+
+### Type Inference of var
+
+Now that you understand the local variable part, it is time to go on to what type inference means. The good news is that this also means what it sounds like. When you type var, you are instructing the compiler to determine the type for you. The compiler looks at the code on the line of the declaration ans uses it to infer the type. Take a look at this examples:
+
+```java
+7: public void reassignment(){
+8:   var number = 7;
+9:   var number = 4;
+10:  var number = "five"; // DOES NOT COMPILE
+11:}
+```
+
+On line 8, the compiler determines that we want an int variable. On line 9, we have no trouble assigning a different int to it. On line 10, Java has a problem. We've asked it to assign a String to an int variable. This is not allowed. It is equivalent to typing this:
+
+```java
+int number = "five";
+```
+
+NOTE: If you know a language like JavaScript, you might be expecting var to mean a variable that can take on any type at runtime. In Java, var is still a specific type defined at compile time. It does not change type at runtime.
+
+So, the type of var can't change at runtime, but what about the value? Take a look at the following code snippet:
+
+```java
+var apples = (short)10;
+apples = (byte)5;
+apples = 1_000_000; // DOES NOT COMPILER
+```
+
+The first line creates a var named apples with a type of short. It then assings a byte of 5 to it, but did that change the data type of apples to byte? Nope! The byte can automatically promoted to a short, because a byte is small enough that it can fit inside of short. In fact, let§s rewrite the example showing what the compiler is really doing when it sees the var:
+
+```java
+short apples = (short)10;
+apples = (byte)5;
+apples = 1_000_000; // DOES NOT COMPILE
+```
+
+The last line does not compile, as one million is well beyond the limits of short. The compiler treats the value as an int and reports an error indicating it cannot be assigned to apples.
+
+For simplicity, when discussing var in the following sections, we are going to assume a variable declaration statement is completed in a single line. For example, you could insert a line break between the variable name and its initialization value, as in the following example:
+
+```java
+7: public void breakingDeclaration() {
+8:     var silly
+9:         = 1;
+10:}
+```
+
+This example is valid and does compile, but we consider the decalration and initialization of silly to be happening on the same line.
+
+#### Examples with var
+
+Let's go through some more scenarios so the exam doesn't trick you on this topic! Do you think the following compiles?
+
+```java
+3:  public void doesThisCompile(boolean check){
+4:    var question;
+5:    question = 1;
+6:    var answer;
+7:    if (check) {
+8:      answer = 2;
+9:    } else {
+10:     answer = 3;
+11:   }
+12:   System.out.println(answer);
+13: }
+```
+
+The code does not compile. Remember that for local variable type inference, the compile looks only at the line with the declaration. Since question and answer are not assigned values on the lines where they are defined, the compile does not know what to make of them. For this reason, both lines 4 and 6 does not compile.
+
+You might find that strange since both branches of the i/else do assign a value. Alas, it is not on the same line as the declaration so it does not count for var. Contrast this behavior with what we saw a shor while ago when we discussed branching and initializing a local variable in our findAnswer() method.
+
+Now we know the initial value used to determine the type needs to be part of the same statement. Can you figure out why these two statements don't compile?
+
+```java
+4: public voidtwoTypes(){
+5:   int a, var b = 3; // DOES NOT COMPILE
+6:   var n = null; // DOES NOT COMPILE 
+7: }
+```
+
+Line 5 wouldn't work event if you replaced var with a real type. All the types declared on a single line must be the same type and share the same declaration. We couldn't write int a, int v = 3; either. Likewise, this is not allowed:
+
+```java
+5: var a = 2, b = 3; // DOES NOT COMPILE
+```
+
+In other words, Java does not allow var in multiple variable declarations.
+
+Line 6 is a single line. The compiler is being asked to infer the type of null. This could be any reference type. The only choice the compiler could make is Object. However, that is almost certainly not what the author of the code intended. The designers of Java decided it would be better not to allow var for null than to have to guess an intent.
+
+## var and null
+
+While a var cannot be initialized with a null value without a type, it can be assigned a null value after it is declared, provided that the underlying data type of the var is an object. Take a look at the following code snippet:
+
+```java
+13: var n = "myData";
+14: n = null;
+15: var m = 4;
+16: m = null; // DOES NOT COMPILE
+```
+
+Line 14 compiles without issue because n is of type String, which is an object. On the other hand, line 16 does not compile since the type of m is a primitive int, which cannot be assigned a null value.
+
+It might surprise you to learn that a var can be initialized to a null value if the type is specified. The following does compile:
+
+```java
+17: var o = (String)null;
+```
+
+since the type is provided, the compiler can apply type inference and set the type of the var to be String.
+
+
+Let's try another example. Do you see why this does not compile?
+
+
+```java
+public int addition(var a, var b) { // DOES NOT COMPILE
+   return a + b; 
+}
+```
+
+In this example, a and b are method parameters. These are not local variables. Be on the lookout for var used with constructors, methods parameters, or instance variables. Using var in one of these places is a good exam trick to see if you are paying attention. Remember that var is only used for local variable type inference!
+
+Time for two more examples. Do you think this is legal?
+
+```java
+package var;
+
+public class Var {
+    public void var() {
+        var var = "var";
+    }
+    public void Var(){
+        Var var = new Var();
+    }
+}
+```
+
+Believe it or not, this code does compile. Java is case sensitive, so Var doesn't introduce any conflicts as a class name. Naming a local variable var is legal. Please don't write code that looks like this at your job! But understanding why it works will help get you ready for any tricky exam questions Oracle could throw at you!
+
+There's one last rule you should be aware of. While var is not a reserved word and allowed to be used as an identifier, it is considered a reserved type name. A reserved type name means it cannot be used to define a type, such as a class, interface or enum. For example, the following code snippet does not compile because of the class name:
+
+```java
+public class var { // DOES NOT COMPILE
+    public var() {
+
+    }
+}
+```
+
+It is often inappropriate to use var as the type for every local variable in your code. That just makes the code difficult do understand. If you are ever unsure of whetherit is appropriate to use var, there are numerous style guides out there that can help. We recommend the one titled [Style Guidelines for Local Variable Type Inference in Java](https://openjdk.java.net/projects/amber/LVTIstyle.html).
+
+## Review of var Rules
+
+We complete this section by summarizing all of the various rules for using var in your code. Here's a quick review of the var rules:
+
+1. A var is used as a local variable in a constructor, method, or initializer block.
+
+2. A var cannot be used in constructor parameters, method parameters, instance variables, or class variables.
+
+3. A var is always initialized on the same line (or statement) where it is declared.
+
+4. The value of a var can change, but the type cannot.
+
+5. A var cannot be initialized with a null value without a type.
+
+6. A var is not permitted in a multiple-variable declaration.
+
+7. A var is a reserved type name but not a reserved word, meaning it can be used as an identifier except as a class, interface or enum type.
+
+That's a lot of rules, but we hope most are pretty straightforward. Since var is new to Java since the last exam, except to see it used frequently on the exam. You'll also be seeing numerous ways var can be used throughout this book.
+
+### var in the Real World
+
+The var keyword is great for exam authors because it makes it easier to write tricky code. When you work on a real project, you want the code to be easy to read.
+
+Once you start having code that looks like the following, it is time to consider using var:
+
+```java
+PileOfPapersToFileInFilingCabinet pileOfPapersToFile = new PileOfPapersToFileInFilingCabinet();
+```
+
+You can see how shortening this would be an improvement without losing any information:
+
+```java
+var pileOfPapersToFile = new PileOfPapersToFileInFilingCabinet();
+```
