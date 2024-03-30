@@ -984,13 +984,71 @@ While garbage collection is pretty standard in most programming languages now, s
 
 Failure to properly handle garbage collection can lead to catastrophic performance and security problems, the most common of which is for an application to run out of memory. Another similar problem, though, is if secure data like credit card number stays in memory long after it is used and is able to be read by other programs. Luckily, Java handles a lot of these complexes issues for you.
 
+## Understanding Garbage Collection
 
+Garbage collection refers to the process of automatically freeing memory on the heap by deleting objects that are no longer reachable in your program. There are many different algorithms for garbage collection, but you don't need to know any of them for the exam. If you are curious, though, one algorithm is to keep a counter on the number of places an object is accessible at any given time and mark it eligible for garbage collection if the counter ever reaches to zero.
 
+## Eligible for Garbage Collection
 
+As a developer, the most interesting part of garbage collections is determining when the memory belonging to an object can be reclaimed. In Java and other languages, eligible for garbage collection refers to an object's state of no longer being accessible in a program and therefore able to be garbage collected.
 
+Does this mean an object that's eligible for garbage collection will be immediately garbage collected? Definitely not. When the object actually is discarded is not under your control, but for the exam, you will need to know at any given moment which objects are eligible for garbage collection.
 
+Think of garbage-collection eligibility like shipping a package. You can take an item, seal it in a labeled box, and put it in your mailbox. This is analogous to making an item eligible for garbage collection. When the mail carrier comes by to pick it up, though, is not in your control. For example, it may be a postal holiday or there could be severe weather event. You can even call the post office and ask them to come pikt it up right away, but there's no way to guatrantee when and if this will actually happen. Hopefully, they come by before your mailbox fills with packages!
 
+As a programmer, the most importante thing you can do to limit out-of-memory problems is to make sure objects are eligible for garbage collection once they are no longer needed. It is the JVM's responsibility to actually perform the gargabe collection.
 
+## Calling System.gc()
+
+Java includes a built-in method to help support garbage collection that can be called at any time.
+
+```java
+public static void main(String[] args) {
+    System.gc();
+}
+```
+
+What is the System.gc() command guaranteed to do? Nothing, actually. It merely suggests that the JVM kick off the garbage collection. The JVM may perform garbage collection at the moment, or it might be busy and choose no to. The JVM is free to ignore the request.
+
+When is System.gc() guaranteed to be called by the JVM? Never, actually. While the JVM will likely run over time as available memory decreases, it is not guaranteed to ever actually run. In fact, shortly before a program runs out of memory and throws OutOfMemoryError, the JVM will try to perform garbage collection, but it's not guaranteed to succeed.
+
+For the exam, you need to know that System.gc() is not guaranteed to run or do anything, and you should be able to recognize when objects become eligible for garbage collection.
+
+## Tracing Eligibility
+
+Ho does the JVM know when an object i eligible for garbage collection? The JVM wait patiently and monitors each object until it determines that the code no longer need that memory. An object will remain on the heap until it is no longer reachable. An object is no longer reachable when one of two situations occurs:
+
+- The object no longer has any reference pointing to it.
+
+- All references to the object have gone out of scope.
+
+### Objects vs References
+
+Do not confuse a reference with the object that it refers to; they are two different entities. The reference is a variable that has a name and can be used to access the contents of an object. A reference can be assigned to another reference, passed to a method, or returned from a method. All references are the same size, no mather what their type is.
+
+An object sits on the heap and does not have a name. Therefore, you have no way to access an object, except through a reference. Objects come in all different shapes and sizes and consume varying amounts of memory. An object cannot be assigned to another object, and an object cannot be passed to a method or returned from a method. It is the object that gets garbage collected, not its reference.
+
+Realizing the difference between a reference and an object goes a long way toward understanding gargbage collection, the new operator, and many other facets of the Java language. Look at this code and see whether you can figure out when each object first becomes eligible for garbage collection:
+
+```java
+1: public class Scope {
+2:     public static void main(String[] args) {
+3:         String one, two;
+4:         one = new String("a");
+5:         two = new String("b");
+6:         one = two;
+7:         String three = one;
+8:         one = null;
+9: }}
+```
+
+On line 6, we got rid of the only reference pointing to "a", making that object eligible for garbage collection. "b" has references pointing to it until it goes out of scope. This means "b" doesn't go out of scope until the end of the method on line 9.
+
+### finalize()
+
+Java allows objects to implement a method called finalize(). This feature can be confusing and hard to use properly. In a nutsheel, the garbage collector would call the finalize() method once. If the garbage collector didn't run, there was no call to finalize(). If the garbage collector failed to collect the object and tried again later, there was no second call to finalize().
+
+This topic is no longer on the exam. In fact, itis deprecated in Object as of Java 9, with the official documentation stating "The finalization mechanism is inherently problematic". Just remember that finalize() can run zero or one times.
 
 
 
