@@ -968,7 +968,13 @@ Got all that? Letç review the rules on scope:
 
 - Class variables: In scope from declaration until program ends
 
+# Destroying Objects
 
+Now that we've played with our objects, it is time to put them away. Luckily, the JVM automatically takes care of that for you. Java provides a garbage collector to automatically look for objects that aren't needed anymore.
+
+Remember, your code isn't the only process running in yout Java program. Java code exists inside of a Java Virtual Machine (JVM), which includes numerous processes independent from your application code. One of the most important of thos is a built-in gargabe collector.
+
+All Java objects are stored in your program memory's heap. The heap, which is also referred to as the free store, represents a large pool of unused memory allocated to your Java application. The heap may be quite large, dependeing on your environment, but there is always a limit to its size. After all, there's no such thing as a computer with infinite memory. If yout program keeps insatntiating objects and leaving them on the heap, eventually it will run out of memory and crash.
 
 
 
